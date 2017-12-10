@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 """
 Django settings for H7VR project.
 
@@ -26,7 +26,7 @@ SECRET_KEY = 'bn_qxdszqwwry$b1wqceuza25)2)*^he=uy2+1z(z23tk+j8%-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['111.230.226.132']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '111.230.226.132']
 
 
 # Application definition
@@ -38,6 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'common',
+    'account',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'H7VR.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,12 +67,15 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'H7VR.wsgi.application'
+
+AUTH_USER_MODEL = 'account.VRUser'
 
 
 # Database
@@ -86,6 +92,9 @@ DATABASES = {
     }
 }
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')     #设置静态文件路径为主目录下的media文件夹
+MEDIA_URL = '/media/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
