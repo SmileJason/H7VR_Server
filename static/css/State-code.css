@@ -1,0 +1,45 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Microsoft Yahei, Verdana;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+.Status {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+.Status-content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.Status-content img{
+    max-width: 94%;
+    margin: 0 auto;
+}
+
+.Status-text {
+    margin-top: 30px;
+    background-size: auto 200px;
+    font-size: 32px;
+    color: #333;
+}
+
+.Status-back {
+    border-bottom: 2px dotted;
+    text-decoration: none;
+    color: #345;
+}
+
+.Status-back:hover {
+    color: #f60;
+}

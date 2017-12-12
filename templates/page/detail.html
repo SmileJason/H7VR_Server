@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+
+{% block title %}{{ page.title }}-{{ block.super }}{% endblock %}
+{% block keywords %}{{ page.abstract }}{% endblock keywords %}
+{% block description %}{{ page.abstract }}{% endblock %}
+
+{% block extra_header %}
+<style type="text/css">
+.activity-page {
+    position:relative;   
+}
+.activity-page img {
+	display: block;
+	width:100%;
+}
+.activity-page a {
+	position:absolute;
+	background-color:white;/*解决ie不能点击*/
+	opacity: 0;
+	filter:alpha(opacity=0);
+}
+.activity-page nav {
+	display:none;
+	z-index:1;
+	background-size: contain!important;
+}
+</style>
+{% endblock extra_header %}
+
+{% block top_banner %}{% endblock %}
+
+{% block content %}
+<div class="activity-page">
+    <div>{{ page.content|safe }}</div>
+</div>
+{% endblock content %}

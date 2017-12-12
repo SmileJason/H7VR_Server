@@ -1,0 +1,47 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/kindeditor/kindeditor-all.js"></script>
+    <script type="text/javascript" src="/static/kindeditor/lang/zh_CN.js"></script>
+{% endblock %}
+
+{% block after_field_sets %}
+{{ block.super }}
+
+<script type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+    editor = K.create('textarea[name="content"]', {
+        resizeType : 1,
+        height: '300px',
+        width: '90%',
+        afterChange:function(){    
+       
+        },
+        imageUploadLimit : 50,
+        filterMode: false,
+        uploadJson : '/articles/photo_upload/',
+        items : [
+            'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'cut', 'copy', 'paste',
+            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', '/',
+            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+            'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'map', 'code', 'pagebreak', 'test_email', 
+            'link', 'unlink', '|', 'about',
+            'fullscreen', 'addNav', 'link3'            
+        ]
+    });
+});
+{% if change %}
+(function($) {
+    $(document).ready(function() {
+        $('fieldset.module.aligned').before('<div style="text-align: right;"><a style="border:1px solid #7CA0C7;display:inline-block;color:#fff;padding:5px 10px;margin-right:20px;background-color:green;" href="/articles/{{ original.id }}/preview/" target="_blank">预览页面</a></div>');
+    });
+})(django.jQuery);
+{% endif %}
+</script>
+{% endblock %}

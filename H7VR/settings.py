@@ -26,8 +26,8 @@ SECRET_KEY = 'bn_qxdszqwwry$b1wqceuza25)2)*^he=uy2+1z(z23tk+j8%-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '111.230.226.132']
-
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '111.230.226.132']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -41,6 +41,9 @@ INSTALLED_APPS = (
 
     'common',
     'account',
+    'product',
+    'vr3d',
+    'page',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -119,3 +122,12 @@ TIME_FORMAT = 'H:i:s'
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
