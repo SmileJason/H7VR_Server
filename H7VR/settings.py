@@ -27,7 +27,8 @@ SECRET_KEY = 'bn_qxdszqwwry$b1wqceuza25)2)*^he=uy2+1z(z23tk+j8%-'
 DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '111.230.226.132']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = (
     'product',
     'vr3d',
     'page',
+    'comment',
 )
 
 MIDDLEWARE_CLASSES = (

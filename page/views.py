@@ -56,3 +56,7 @@ def preview_page(request, page_id):
                      (page.title, page.get_status_display()))
     # hots = Page.objects.filter(type=page.type, status=PAGE_STATUS_ACTIVE)[:20]
     return render(request, 'page/detail.html', {'page': page})
+
+def get_page(request, slug, ptype=None):
+    page = get_object_or_404(Page, slug=slug, status=PAGE_STATUS_ACTIVE)
+    return render(request, 'page/detail.html', {'page': page})
