@@ -16,7 +16,12 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 
+import H7VR.views as view
+
 urlpatterns = [
+    
+    # url(r'^$', include(admin.site.urls)),
+
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^articles/', include('page.urls')),
@@ -28,3 +33,7 @@ urlpatterns = [
             'document_root': settings.MEDIA_ROOT,
         }),
 ]
+
+handler404 = view.page_not_found
+
+handler500 = view.page_error
