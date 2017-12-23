@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'vr3d',
     'page',
     'comment',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (

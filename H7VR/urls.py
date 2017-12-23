@@ -20,7 +20,7 @@ import H7VR.views as view
 
 urlpatterns = [
     
-    # url(r'^$', include(admin.site.urls)),
+    # url(r'^$', 'common.views.index', name='home'),
 
     url(r'^admin/', include(admin.site.urls)),
 
@@ -29,9 +29,13 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
         }),
+
     url(r'^.well-known/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
         }),
+
+    url(r'^api/', include('api.urls')),
+
 ]
 
 handler404 = view.page_not_found

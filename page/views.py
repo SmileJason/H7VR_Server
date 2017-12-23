@@ -21,10 +21,10 @@ def upload_image(request):
 
         ext_allowed = ['gif', 'jpg', 'jpeg', 'png']
         if ext not in ext_allowed:
-            return HttpResponse(json.dumps({'error': 1, 'message': u'上传图片的格式不被允许：%s' % ext}), mimetype='application/json')
+            return HttpResponse(json.dumps({'error': 1, 'message': u'上传图片的格式不被允许：%s' % ext}), content_type='application/json')
 
         if file.size > max_size:
-            return HttpResponse(json.dumps({'error': 1, 'message': u'图片不能超过1MB'}), mimetype='application/json')
+            return HttpResponse(json.dumps({'error': 1, 'message': u'图片不能超过1MB'}), content_type='application/json')
 
         filename = uuid_image_path(file.name, 'page')
         filepath = os.path.join(
