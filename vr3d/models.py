@@ -22,6 +22,7 @@ class VR3D(models.Model):
 	abstract = models.CharField(u'摘要', max_length=256, null=True, blank=True)
 	thumb = models.ImageField(u'封面', upload_to=vr3d_img_path, null=True, blank=True, help_text=u'建议大小为820X400')
 	slug = models.SlugField(u'唯一路径', max_length=254, unique=True)
+	link = models.CharField(u'链接', max_length=256, null=True, blank=True)
 	tag = models.ManyToManyField(TagCategory, db_table='vr_tag_category_map', verbose_name=u'标签')
 	status = models.CharField(u'状态', choices=PAGE_STATUS, default='1', max_length=1)
 	order = models.PositiveIntegerField(u'排序', default=100, help_text=u'从小到大显示,相同顺序按照[显示发布时间]排序')
