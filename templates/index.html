@@ -43,9 +43,9 @@
         <script src="/static/js/jquery-1.9.1.min.js"></script>
 
         <script>
-            function show_vr_detail(vrname) {
-                $.post('/product/vr/detail/'
-                    ,{'vrname':vrname}
+            function show_vr_detail(title) {
+                $.post('/vr3d/vr/show/'
+                    ,{'title':title}
                     ,function(data,status){
                         var errcode = data['errcode'];
                         if(errcode == '0') {
@@ -64,13 +64,13 @@
         <p style="font-size: 20px; font-weight: 600; margin-top: 20px;">Buy家清单</p>
         <p style="font-size: 14px; color: #bbbbbb;">我们的缘分，注定从这里开始</p>
 
-        {% for vr in vrs %}
+        {% for vr in vrlist %}
             <div style="position: relative;">
-                <img src="{{ vr.get_pc_cover }}" style="position: relative; width: 100%;" onclick="show_vr_detail('{{ vr.name }}')">
+                <img src="{{ vr.get_cover }}" style="position: relative; width: 100%;" onclick="show_vr_detail('{{ vr.title }}')">
                 
                 <div style="position: relative; bottom: 0px; width: 100%; height: 50px;">
-                    <p style="float: left; margin-left: 110px; font-size: 14px;">{{ vr.name }}</p>
-                    <p style="float: left; margin-left: 110px;  font-size: 12px; color: #bbbbbb;">{{ vr.description }}</p>
+                    <p style="float: left; margin-left: 110px; font-size: 14px;">{{ vr.title }}</p>
+                    <p style="float: left; margin-left: 110px;  font-size: 12px; color: #bbbbbb;">{{ vr.abstract }}</p>
                 </div>
 
                 <div style="width:80px; height:80px; border-radius:50%; overflow:hidden; position: absolute; left:20px; bottom: 10px;">

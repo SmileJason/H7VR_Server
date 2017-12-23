@@ -30,7 +30,9 @@ class VR3D(models.Model):
 	created_time = models.DateTimeField(u'创建时间', auto_now_add=True)
 	last_modified = models.DateTimeField(u'最近更新时间', auto_now=True)
 	alias = models.CharField(u'设计师', max_length=128)
+	designer_cover = models.ImageField(u'设计师封面', upload_to=vr3d_img_path, null=True, blank=True)
 	creator = models.ForeignKey(VRUser, verbose_name=u'创建人', null=True, blank=True)
+	view_count = models.PositiveIntegerField(u'浏览量', default=10)
 
 	class Meta:
 		db_table = 'vr3d'
@@ -40,6 +42,12 @@ class VR3D(models.Model):
 	def __unicode__(self):
 		return smart_unicode(self.title)
 
-	@property
-	def thumb_url(self):
-		return get_image(self.thumb, 200, 150) if self.thumb else ''
+	def get_cover(self):
+		if self.thumb:
+			return get_image(self.thumb, 1080)
+		return ''
+
+	def get_designer_cover(self):
+		if self.designer_cover:
+			return get_image(self.designer_cover, 200)
+		return ''

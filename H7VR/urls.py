@@ -20,7 +20,7 @@ import H7VR.views as view
 
 urlpatterns = [
     
-    # url(r'^$', 'common.views.index', name='home'),
+    url(r'^$', 'common.views.index', name='index'),
 
     url(r'^admin/', include(admin.site.urls)),
 
@@ -35,6 +35,8 @@ urlpatterns = [
         }),
 
     url(r'^api/', include('api.urls')),
+
+    url(r'^vr3d/', include('vr3d.urls')),
 
 ]
 

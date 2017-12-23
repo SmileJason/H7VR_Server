@@ -1,5 +1,7 @@
 #coding: utf-8
 from django.shortcuts import render
+from vr3d.models import VR3D
+from common import LOG
 
 # def index(request):
 #     if request.is_mobile:
@@ -27,3 +29,9 @@ from django.shortcuts import render
 #     data = {'latests': latest_tags, 'hots':hots, 'panes': IndexTag.objects.all().order_by('order'),
 #             'sliders': sliders,  'topbanners': topbanners, 'floors': floor_list}
 #     return render(request, 'index.html', data)
+
+def index(request):
+	vrlist = VR3D.objects.filter()[:5]
+	data = {'vrlist' : vrlist}
+	return render(request, 'index.html', data)
+
