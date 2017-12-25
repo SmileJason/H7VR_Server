@@ -4,7 +4,7 @@ from django.contrib import admin
 from vr3d.models import VR3D
 
 class VR3DAdmin(admin.ModelAdmin):
-    list_display = ('title', 'time_display', 'order', 'creator', 'status', 'created_time')
+    list_display = ('title', 'order', 'creator', 'status', 'created_time')
     list_filter = ('status', 'tag', 'creator')
     search_fields = ('title',)
     filter_horizontal = ('tag',)

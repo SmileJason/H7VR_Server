@@ -32,6 +32,13 @@ from common import LOG
 
 def index(request):
 	vrlist = VR3D.objects.filter()[:5]
+	# for vr in vrlist :
+	# 	LOG.info(vr.thumb)
+	# 	LOG.info(vr.get_cover())
+	# for vr in vrlist:
+	# 	LOG.info(vr.thumb)
+	# 	vr.thumb = vr.get_cover
+	# 	vr.designer_cover = vr.get_designer_cover
 	data = {'vrlist' : vrlist}
 	return render(request, 'index.html', data)
 

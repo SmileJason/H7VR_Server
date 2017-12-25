@@ -6,6 +6,8 @@ from django.utils.encoding import smart_unicode
 
 from common.utils.images import uuid_image_path, get_image
 
+from common import LOG
+
 
 def vr3d_img_path(instance, filename):
     return uuid_image_path(filename, 'vr3d')
@@ -51,3 +53,10 @@ class VR3D(models.Model):
 		if self.designer_cover:
 			return get_image(self.designer_cover, 200)
 		return ''
+
+	def preview_admin(self):
+		if self.thumb:
+			return '<a target="_blank" href="%(url)s"><img style="border:1px solid #ccc;padding:2px;max-width:150px;" src="%(url)s"/></a>' % {'url': get_image(self.thumb, 150)}
+		return ''
+	preview_admin.short_description = u'图片预览'
+	preview_admin.allow_tags = True
